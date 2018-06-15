@@ -17,7 +17,7 @@
 
 ## ❯ Why
 
-TODO
+A Vue JS wrapper around [logdown.js](http://caiogondim.github.io/logdown.js/). Developed for Vue 2.
 
 ![divider](./w3tec-divider.png)
 
@@ -28,7 +28,29 @@ TODO
 
 ## ❯ Getting Started
 
-TODO
+Install using npm:
+
+```bash
+$ npm install vue-logdown
+```
+
+Import and register Vue plugin:
+
+```js
+import Vue from 'vue';
+import VueLogdown from 'vue-logdown';
+
+Vue.use(VueLogdown);
+```
+
+Or add some [logdown options](https://github.com/caiogondim/logdown.js?files=1#options)
+
+```js
+...
+Vue.use(VueLogdown, {
+  markdown: true,
+});
+```
 
 ![divider](./w3tec-divider.png)
 
