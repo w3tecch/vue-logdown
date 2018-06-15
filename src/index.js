@@ -9,9 +9,6 @@
 
 import logdown from 'logdown';
 
-console.log('logdown', logdown);
-console.log('window.logdown', window.logdown);
-
 const VueLogdown = {
 	install(VueInstance, options) {
 

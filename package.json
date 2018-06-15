@@ -1,6 +1,6 @@
 {
   "name": "vue-logdown",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "logdown plugin for awesome frontend logging",
   "main": "dist/vue-logdown.min.js",
   "typings": "types/index.d.ts",
