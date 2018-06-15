@@ -1,29 +1,10 @@
-import Vue = require('vue');
+import "./vue";
+import { VueLogdown } from "./logdown";
 
-import * as Logdown from './logdown';
+export default VueLogdown;
 
-type LogdownBuilder = (scope: string) => LogdownInstance;
-
-interface LogdownInstance {
-	debug(...x: any[]): void;
-	info(...x: any[]): void;
-	log(...x: any[]): void;
-	warn(...x: any[]): void;
-	error(...x: any[]): void;
-}
-
-interface LogdownOptions {
-	prefix: string;
-	markdown: boolean;
-	isEnabled: boolean;
-}
-
-declare module 'vue/types/vue' {
-	interface VueConstructor {
-		createLogger: LogdownBuilder
-	}
-
-	interface Vue {
-		$createLogger: LogdownBuilder
-	}
-}
+export {
+	LogdownBuilder,
+	LogdownInstance,
+	LogdownOptions
+} from "./logdown";

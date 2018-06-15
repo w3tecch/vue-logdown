@@ -7,42 +7,35 @@
  * https://caiogondim.github.io/logdown.js/
  */
 
-import * as logdown from 'logdown';
+import logdown from 'logdown';
+
+console.log('logdown', logdown);
+console.log('window.logdown', window.logdown);
 
 const VueLogdown = {
 	install(VueInstance, options) {
 
 		const LOCAL_STORAGE_KEY = 'debug';
+		const PREFIX = 'app';
 
 		const defaultOptions = {
-			prefix: 'app',
 			markdown: true,
 			isEnabled: true,
 		};
 
-		const logdownOptions = Object.assign({}, defaultOptions, {
-			markdown: options.markdown,
-			isEnabled: options.isEnabled,
-		});
+		const logdownOptions = Object.assign({}, defaultOptions, options);
 
 		if (localStorage.getItem(LOCAL_STORAGE_KEY) === null) {
-			localStorage.setItem(LOCAL_STORAGE_KEY, `${options.prefix}:*`);
+			localStorage.setItem(LOCAL_STORAGE_KEY, `${PREFIX}:*`);
 		}
 
-		VueInstance.$createLogger = (prefix) => {
-			return logdown(`${options.prefix}:${prefix}`, logdownOptions);
-		};
+		const createLogger = (prefix) => logdown(`${PREFIX}:${prefix}`, logdownOptions);
 
-		VueInstance.prototype.$createLogger = (prefix) => {
-			return logdown(`${options.prefix}:${prefix}`, logdownOptions);
-		};
+		VueInstance.$createLogger = createLogger;
+
+		VueInstance.prototype.$createLogger = createLogger;
 
 	},
 };
-
-// register plugin if it is used via cdn or directly as a script tag
-if (typeof window !== 'undefined' && window.Vue) {
-	window.VueLogdown = VueLogdown;
-}
 
 export default VueLogdown;
